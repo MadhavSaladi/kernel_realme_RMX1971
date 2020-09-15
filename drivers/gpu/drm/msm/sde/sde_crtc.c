@@ -97,7 +97,6 @@ static struct sde_crtc_custom_events custom_events[] = {
 #define MAX_FRAME_COUNT			1000
 #define MILI_TO_MICRO			1000
 
-
 static inline struct sde_kms *_sde_crtc_get_kms(struct drm_crtc *crtc)
 {
 	struct msm_drm_private *priv;
@@ -164,7 +163,6 @@ static void sde_crtc_calc_fps(struct sde_crtc *sde_crtc)
 	sde_crtc->fps_info.frame_count++;
 
 	if (diff_us >= DEFAULT_FPS_PERIOD_1_SEC) {
-		if (diff_us >= DEFAULT_FPS_PERIOD_1_SEC) {
 
 		 /* Multiplying with 10 to get fps in floating point */
 		fps = ((u64)sde_crtc->fps_info.frame_count)
@@ -179,7 +177,6 @@ static void sde_crtc_calc_fps(struct sde_crtc *sde_crtc)
 	}
 
 	if (!sde_crtc->fps_info.time_buf)
-		if (!sde_crtc->fps_info.time_buf)
 		return;
 
 	/**
@@ -688,11 +685,7 @@ static int _sde_debugfs_fps_status_show(struct seq_file *s, void *data)
 	diff_us = (u64)ktime_us_delta(current_time_us,
 			sde_crtc->fps_info.last_sampled_time_us);
 
-<<<<<<< HEAD
 	if (diff_us >= DEFAULT_FPS_PERIOD_1_SEC) {
-=======
-		if (diff_us >= DEFAULT_FPS_PERIOD_1_SEC) {
->>>>>>> a92b49e8c031... Update sde_crtc.c for fps support
 
 		 /* Multiplying with 10 to get fps in floating point */
 		fps = ((u64)sde_crtc->fps_info.frame_count)
@@ -869,7 +862,6 @@ static ssize_t measured_fps_show(struct device *device,
 			sde_crtc->fps_info.fps_periodic_duration, frame_count);
 }
 
-
 static ssize_t vsync_event_show(struct device *device,
 	struct device_attribute *attr, char *buf)
 {
@@ -894,7 +886,6 @@ static DEVICE_ATTR(fps_periodicity_ms, 0644, fps_periodicity_show,
 static struct attribute *sde_crtc_dev_attrs[] = {
 	&dev_attr_vsync_event.attr,
 	&dev_attr_measured_fps.attr,
-		&dev_attr_measured_fps.attr,
 	&dev_attr_fps_periodicity_ms.attr,
 	NULL
 };
@@ -6606,17 +6597,6 @@ struct drm_crtc *sde_crtc_init(struct drm_device *dev, struct drm_plane *plane)
 	INIT_LIST_HEAD(&sde_crtc->rp_head);
 
 	sde_crtc->enabled = false;
-
-		/* Below parameters are for fps calculation for sysfs node */
-	sde_crtc->fps_info.fps_periodic_duration = DEFAULT_FPS_PERIOD_1_SEC;
-	sde_crtc->fps_info.time_buf = kmalloc_array(MAX_FRAME_COUNT,
-			sizeof(sde_crtc->fps_info.time_buf), GFP_KERNEL);
-
-	if (!sde_crtc->fps_info.time_buf)
-		SDE_ERROR("invalid buffer\n");
-	else
-		memset(sde_crtc->fps_info.time_buf, 0,
-			sizeof(*(sde_crtc->fps_info.time_buf)));
 
 	/* Below parameters are for fps calculation for sysfs node */
 	sde_crtc->fps_info.fps_periodic_duration = DEFAULT_FPS_PERIOD_1_SEC;
