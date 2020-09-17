@@ -688,11 +688,11 @@ static int _sde_debugfs_fps_status_show(struct seq_file *s, void *data)
 	diff_us = (u64)ktime_us_delta(current_time_us,
 			sde_crtc->fps_info.last_sampled_time_us);
 
-<<<<<<< HEAD
+
 	if (diff_us >= DEFAULT_FPS_PERIOD_1_SEC) {
-=======
+
 		if (diff_us >= DEFAULT_FPS_PERIOD_1_SEC) {
->>>>>>> a92b49e8c031... Update sde_crtc.c for fps support
+
 
 		 /* Multiplying with 10 to get fps in floating point */
 		fps = ((u64)sde_crtc->fps_info.frame_count)
