@@ -690,7 +690,7 @@ static int _sde_debugfs_fps_status_show(struct seq_file *s, void *data)
 
 		if (diff_us >= DEFAULT_FPS_PERIOD_1_SEC) {
 
-	if (diff_us >= DEFAULT_FPS_PERIOD_1_SEC) {
+
 
 		 /* Multiplying with 10 to get fps in floating point */
 		fps = ((u64)sde_crtc->fps_info.frame_count)
